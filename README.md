@@ -17,12 +17,10 @@ workspace for wake forest buildathon!
 > - _**sjlife_splitter.py**_: SJLIFE train/val/test split
 > - _**split_manifest.json**_: Frozen MIMIC patient split
 > - _**split_manifest_sjlife.json**_: Frozen SJLIFE participant split
-
-pending (will be in repo soon)
-> - _patient_splitter.py_: MIMIC patient split maker
-> - _verify_splits.py_: Runs V1–V11 checks
-> - _evaluate.py_: AUROC scoring with strata
-> - _ecg_mimic_pairs_manifest.json_: Frozen MIMIC pair hashes
+> - _**patient_splitter.py**_: MIMIC patient split maker
+> - _**verify_splits.py**_: Runs V1–V11 checks
+> - _**evaluate.py**_: AUROC scoring with strata
+> - _**ecg_mimic_pairs_manifest.json**_: Frozen MIMIC pair hashes
 
 ### daily log
 [9-22-26] DATA
