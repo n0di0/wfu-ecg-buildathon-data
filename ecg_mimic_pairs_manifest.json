@@ -1,0 +1,74 @@
+{
+  "seed": 42,
+  "partitions": {
+    "train": {
+      "status": "generated",
+      "n_pairs": 160802,
+      "n_positive": 80401,
+      "n_negative": 80401,
+      "sha256": "453ce29f4104dc03f9415ffd41c28aae711175850bdcf4d74c150255012a404e",
+      "checks": {
+        "V7_pair_validity": {
+          "pass": true,
+          "positive_same_participant_diff_ecg": true,
+          "negative_different_participant": true,
+          "no_duplicate_pairs": true,
+          "all_participants_in_partition": true
+        },
+        "V8_cap_enforcement": {
+          "pass": true,
+          "max_positive_pairs_for_one_participant": 5,
+          "positive_cap": 5,
+          "max_negative_pairs_for_one_participant": 10,
+          "negative_cap": 10
+        }
+      }
+    },
+    "val": {
+      "status": "generated",
+      "n_pairs": 16754,
+      "n_positive": 8377,
+      "n_negative": 8377,
+      "sha256": "725f11215a8e2097467168e5da3212bd1250e81a4debf3eb025c031fbdbe18c6",
+      "checks": {
+        "V7_pair_validity": {
+          "pass": true,
+          "positive_same_participant_diff_ecg": true,
+          "negative_different_participant": true,
+          "no_duplicate_pairs": true,
+          "all_participants_in_partition": true
+        },
+        "V8_cap_enforcement": {
+          "pass": true,
+          "max_positive_pairs_for_one_participant": 2,
+          "positive_cap": 2,
+          "max_negative_pairs_for_one_participant": 5,
+          "negative_cap": 5
+        }
+      }
+    },
+    "test": {
+      "status": "generated",
+      "n_pairs": 16628,
+      "n_positive": 8314,
+      "n_negative": 8314,
+      "sha256": "57ca069b1dfbe637499973fa00cc9eff57fbb4124042c7c2144829d917b415fc",
+      "checks": {
+        "V7_pair_validity": {
+          "pass": true,
+          "positive_same_participant_diff_ecg": true,
+          "negative_different_participant": true,
+          "no_duplicate_pairs": true,
+          "all_participants_in_partition": true
+        },
+        "V8_cap_enforcement": {
+          "pass": true,
+          "max_positive_pairs_for_one_participant": 2,
+          "positive_cap": 2,
+          "max_negative_pairs_for_one_participant": 5,
+          "negative_cap": 5
+        }
+      }
+    }
+  }
+}
