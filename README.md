@@ -2,10 +2,27 @@
 temp workspace for wfu buildathon! 
 
 ### files in this repo
-- guide to download MIMIC IV ECG data via AWS S3
-- script to filter all eligible patients from dataset
-- list of all eligible patients with 2+ studies
-- daily log for data role
+> - _**GUIDE_data_sync.md**_: How to sync data
+> - _**GUIDE_download_mimiciv_awss3.md**_: Fast MIMIC AWS download
+> - _**README.md**_: Repo overview and log
+> - _**check_my_downloads.py**_: Verify your downloaded files
+> - _**check_sjlife_ids.py**_: SJLIFE CSV-versus-disk ID check
+> - _**cross_vendor_pairs.py**_: Clinical-watch SJLIFE pair maker
+> - _**ecg_akbilgic_pairs_manifest.json**_: Frozen SJLIFE pair hashes
+> - _**eligible_patients.csv**_: Patients with 2+ studies
+> - _**filter_eligible_patients.py**_: Builds eligible patient lists
+> - _**ingest.py**_: Raw ECGs to arrays
+> - _**pair_generator.py**_: MIMIC same-patient pair maker
+> - _**requirements.txt**_: Python package list
+> - _**sjlife_splitter.py**_: SJLIFE train/val/test split
+> - _**split_manifest.json**_: Frozen MIMIC patient split
+> - _**split_manifest_sjlife.json**_: Frozen SJLIFE participant split
+
+pending (will be in repo soon)
+> - _patient_splitter.py_: MIMIC patient split maker
+> - _verify_splits.py_: Runs V1–V11 checks
+> - _evaluate.py_: AUROC scoring with strata
+> - _ecg_mimic_pairs_manifest.json_: Frozen MIMIC pair hashes
 
 ### daily log
 [9-22-26] DATA
@@ -56,3 +73,20 @@ temp workspace for wfu buildathon!
 - Verified ML matrix (232449, 2500 float 32, no NaN/Inf values) and all checksums
 - Wrote README in the Google Drive describing all deliverables, preservation files, verification files, and dataset definition files
 - Uploaded all relevant project files to Google Drive in respective folders
+
+[9-29-26] DATA
+- Recorded that SJLIFE/Apple Watch data is permitted for training
+- Patched _**run_akbilgic_batch**_ in _**ingest.py**_ (4 edits, backed up old copy), fixed participant ID handling
+- Ran SJLIFE ingest, 480 records (240 participants, 1 clinical + 1 watch each), 6 failures (PID_131, 210, 232)
+- Found the ID mismatch, CSV IDs 131/210/232 have no files and files 209/231/376 have no CSV rows
+- Excluded all six until the dataset authors confirm, did not guess a mapping
+- Wrote _**sjlife_splitter.py**_, participant split 50/25/25 (120/60/60), seed 42, frozen (sha256 7f9c0c25...)
+- Wrote _**cross_vendor_pairs.py**_, clinical-watch pairs with MIMIC columns, frozen (sha256 ed9379eb...)
+- Info: train 240 (1:1), val 3,600 (60 pos / 3,540 neg), test 3,600 (60 pos / 3,540 neg)
+- Wrote _**evaluate.py**_, AUROC + SE, participant bootstrap, strata by vendor / time gap / age, test-set guard
+- Wrote _**verify_splits.py**_, V1-V11 on MIMIC + SJLIFE, ran on real data: 34 pass, 0 fail, V11 pending Modeling
+- Confirmed N = 161,352 patients, Nelig = 32,457, and 232,756 eligible - 307 quarantined = 232,449 ingested
+- Open, six SJLIFE IDs for dataset authors, split and pair decisions to review with team
+
+
+
