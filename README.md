@@ -1,5 +1,5 @@
-# mimic-iv-ecg
-temp workspace for wfu buildathon! 
+# wfu-ecg-buildathon
+workspace for wake forest buildathon!
 
 ### files in this repo
 > - _**GUIDE_data_sync.md**_: How to sync data
