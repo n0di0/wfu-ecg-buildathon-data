@@ -1,0 +1,92 @@
+{
+  "seed": 42,
+  "split_manifest_file": "split_manifest_sjlife.json",
+  "split_manifest_sha256": "7f9c0c25ea2baca25a9d004d6cf991e974aacbf81b1852b38badc7d512046220",
+  "files": {
+    "train": {
+      "file": "ecg_akbilgic_train_pairs.csv",
+      "sha256": "7a3d2c4bca1d9827b97afe0eb19b96b3e905b6940fcd47808409bdd75444f03b",
+      "n_pairs": 240,
+      "n_pos": 120,
+      "n_neg": 120,
+      "neg_per_pos": 1,
+      "frozen": false
+    },
+    "val": {
+      "file": "ecg_akbilgic_val_pairs.csv",
+      "sha256": "cc2a991a4d8e6f80a1e540c319b5bbad0599f3ad229c89f5cbc48e9bd37b7801",
+      "n_pairs": 3600,
+      "n_pos": 60,
+      "n_neg": 3540,
+      "neg_per_pos": 0,
+      "frozen": true
+    },
+    "test": {
+      "file": "ecg_akbilgic_test_pairs.csv",
+      "sha256": "ab30e3531ef61a003de43c60ec06abb5a7aaed00af22ad0957b84ad5411e69a4",
+      "n_pairs": 3600,
+      "n_pos": 60,
+      "n_neg": 3540,
+      "neg_per_pos": 0,
+      "frozen": true
+    }
+  },
+  "checks": [
+    {
+      "check": "S split manifest (train)",
+      "passed": true,
+      "detail": "participant list matches its recorded SHA-256"
+    },
+    {
+      "check": "S split manifest (val)",
+      "passed": true,
+      "detail": "participant list matches its recorded SHA-256"
+    },
+    {
+      "check": "S split manifest (test)",
+      "passed": true,
+      "detail": "participant list matches its recorded SHA-256"
+    },
+    {
+      "check": "S participants match metadata",
+      "passed": true,
+      "detail": "240 in split, 240 with both recordings"
+    },
+    {
+      "check": "V7 pair validity (train)",
+      "passed": true,
+      "detail": "positives same-participant: True; negatives different-participant: True; IDs match participant+vendor: True; duplicates: 0; no reversed pairs: True; all inside partition: True"
+    },
+    {
+      "check": "V8 cap enforcement (train)",
+      "passed": true,
+      "detail": "max positives per participant = 1 (cap 1); 120 of 120 participants have a positive"
+    },
+    {
+      "check": "V7 pair validity (val)",
+      "passed": true,
+      "detail": "positives same-participant: True; negatives different-participant: True; IDs match participant+vendor: True; duplicates: 0; no reversed pairs: True; all inside partition: True"
+    },
+    {
+      "check": "V8 cap enforcement (val)",
+      "passed": true,
+      "detail": "max positives per participant = 1 (cap 1); 60 of 60 participants have a positive"
+    },
+    {
+      "check": "V7 pair validity (test)",
+      "passed": true,
+      "detail": "positives same-participant: True; negatives different-participant: True; IDs match participant+vendor: True; duplicates: 0; no reversed pairs: True; all inside partition: True"
+    },
+    {
+      "check": "V8 cap enforcement (test)",
+      "passed": true,
+      "detail": "max positives per participant = 1 (cap 1); 60 of 60 participants have a positive"
+    },
+    {
+      "check": "V10 cross-vendor isolation",
+      "passed": true,
+      "detail": "no participant appears in pairs of two partitions"
+    }
+  ],
+  "notes": []
+}
